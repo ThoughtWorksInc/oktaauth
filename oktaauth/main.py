@@ -9,6 +9,8 @@ import sys
 
 from oktaauth import metadata
 
+def print_err(s):
+    print(s, file=sys.stderr)
 
 def main(argv):
     """Program entry point.
@@ -36,14 +38,29 @@ URL: <{url}>
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=metadata.description,
         epilog=epilog)
+
     arg_parser.add_argument(
         '-V', '--version',
         action='version',
         version='{0} {1}'.format(metadata.project, metadata.version))
 
-    arg_parser.parse_args(args=argv[1:])
+    arg_parser.add_argument(
+        '-s', '--server', type=str, help='Okta server', required=True)
+    arg_parser.add_argument(
+        '-u', '--username', type=str, help='Username', required=True)
+    arg_parser.add_argument(
+        '-t', '--apptype', type=str, help='Application type', required=True)
+    arg_parser.add_argument(
+        '-i', '--appid', type=str, help='Application id', required=True)
 
-    print(epilog)
+    config = arg_parser.parse_args(args=argv[1:])
+
+    print_err(epilog)
+
+    print_err("Server: {0}".format(config.server))
+    print_err("Username: {0}".format(config.username))
+    print_err("Application type: {0}".format(config.apptype))
+    print_err("Application ID: {0}".format(config.appid))
 
     return 0
 
