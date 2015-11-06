@@ -6,7 +6,10 @@ from __future__ import print_function
 
 import argparse
 import sys
+import getpass
 import logging
+
+from oktaauth import models
 from oktaauth import metadata
 
 log = logging.getLogger('oktaauth')
@@ -69,8 +72,18 @@ URL: <{url}>
     log.debug("Application type: %s" % config.apptype)
     log.debug("Application ID: %s" % config.appid)
 
-    return 0
+    password = getpass.getpass()
+    passcode = getpass.getpass("Passcode: ")
+    okta = models.OktaSamlAuth(config.server,
+                               config.apptype, config.appid,
+                               config.username, password, passcode)
 
+    print(okta.auth())
+
+    del password
+    del passcode
+
+    return 0
 
 def entry_point():
     """Zero-argument entry point for use with setuptools/distribute."""
