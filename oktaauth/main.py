@@ -6,13 +6,20 @@ from __future__ import print_function
 
 import argparse
 import sys
-
+import logging
 from oktaauth import metadata
 
-def print_err(s):
-    print(s, file=sys.stderr)
+log = logging.getLogger('oktaauth')
+
+def configurelogging():
+    log.setLevel(logging.DEBUG)
+    stderrlog = logging.StreamHandler()
+    stderrlog.setFormatter(logging.Formatter("%(message)s"))
+    log.addHandler(stderrlog)
 
 def main(argv):
+    configurelogging()
+
     """Program entry point.
 
     :param argv: command-line arguments
@@ -55,12 +62,12 @@ URL: <{url}>
 
     config = arg_parser.parse_args(args=argv[1:])
 
-    print_err(epilog)
+    log.info(epilog)
 
-    print_err("Server: {0}".format(config.server))
-    print_err("Username: {0}".format(config.username))
-    print_err("Application type: {0}".format(config.apptype))
-    print_err("Application ID: {0}".format(config.appid))
+    log.debug("Server: %s" % config.server)
+    log.debug("Username: %s" % config.username)
+    log.debug("Application type: %s" % config.apptype)
+    log.debug("Application ID: %s" % config.appid)
 
     return 0
 
