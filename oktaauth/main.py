@@ -78,12 +78,16 @@ URL: <{url}>
                                config.apptype, config.appid,
                                config.username, password, passcode)
 
-    print(okta.auth())
+    try:
+        print(okta.auth())
+        return 0
+    except Exception as e:
+        log.error('Error authorising with okta: %s' % e)
+        return 1
+    finally:
+        del password
+        del passcode
 
-    del password
-    del passcode
-
-    return 0
 
 def entry_point():
     """Zero-argument entry point for use with setuptools/distribute."""
