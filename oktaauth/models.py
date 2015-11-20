@@ -105,6 +105,10 @@ class OktaSamlAuth(OktaAPIAuth):
     def saml(self, sessionToken):
         url = '{base}/app/{app}/{appid}/sso/saml'.format(base=self.okta_url, app=self.application_type, appid=self.application_id)
         resp = requests.get(url=url, params={'onetimetoken': sessionToken})
+
+        if resp.status_code != 200:
+            raise Exception('Received error code from server: %s' % resp.status_code)
+
         return resp.text.decode('utf8')
 
     def assertion(self, saml):
