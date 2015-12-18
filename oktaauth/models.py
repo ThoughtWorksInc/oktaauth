@@ -64,7 +64,7 @@ class OktaAPIAuth(object):
                 status = rv['status']
             if status == 'SUCCESS':
                 log.info('User %s authenticated without MFA' % self.username)
-                return res['sessionToken']
+                return rv['sessionToken']
             if status == 'MFA_ENROLL' or status == 'MFA_ENROLL_ACTIVATE':
                 log.info('User %s needs to enroll first' % self.username)
                 return False
