@@ -59,6 +59,8 @@ URL: <{url}>
     arg_parser.add_argument(
         '-u', '--username', type=str, help='Username', required=True)
     arg_parser.add_argument(
+        '--nopasscode', help='Skip passcode question.', dest='nopasscode', action='store_true', default=False)
+    arg_parser.add_argument(
         '-t', '--apptype', type=str, help='Application type', required=True)
     arg_parser.add_argument(
         '-i', '--appid', type=str, help='Application id', required=True)
@@ -73,7 +75,9 @@ URL: <{url}>
     log.debug("Application ID: %s" % config.appid)
 
     password = getpass.getpass()
-    passcode = getpass.getpass("Passcode: ")
+    passcode = ''
+    if not config.nopasscode:
+        getpass.getpass("Passcode: ")
     okta = models.OktaSamlAuth(config.server,
                                config.apptype, config.appid,
                                config.username, password, passcode)
