@@ -1,6 +1,9 @@
 import requests
 import base64
-import urlparse
+if sys.version_info[0] < 3:
+    import urlparse
+else:
+    from urllib.parse import urlparse
 import logging
 from bs4 import BeautifulSoup
 log = logging.getLogger('oktaauth')
