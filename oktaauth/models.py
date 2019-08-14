@@ -115,7 +115,7 @@ class OktaSamlAuth(OktaAPIAuth):
         if resp.status_code != 200:
             raise Exception('Received error code from server: %s' % resp.status_code)
 
-        return resp.text.decode('utf8')
+        return resp.text
 
     def assertion(self, saml):
         assertion = ''
@@ -124,7 +124,8 @@ class OktaSamlAuth(OktaAPIAuth):
             if inputtag.get('name') == 'SAMLResponse':
                 assertion = inputtag.get('value')
 
-        return base64.b64decode(assertion)
+        # Without an additional decode() call the output would be a byte array which is prefixed with "b'"
+        return base64.b64decode(assertion).decode()
 
     def auth(self):
         token = super(OktaSamlAuth, self).auth()
