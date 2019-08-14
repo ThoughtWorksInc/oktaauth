@@ -115,6 +115,10 @@ class OktaSamlAuth(OktaAPIAuth):
         if resp.status_code != 200:
             raise Exception('Received error code from server: %s' % resp.status_code)
 
+        py_version = int(str(range(3))[-2])
+        if py_version == 2:
+            return resp.text.decode('utf8')
+
         return resp.text
 
     def assertion(self, saml):
@@ -123,6 +127,10 @@ class OktaSamlAuth(OktaAPIAuth):
         for inputtag in soup.find_all('input'):
             if inputtag.get('name') == 'SAMLResponse':
                 assertion = inputtag.get('value')
+
+        py_version = int(str(range(3)[-2]))
+        if py_version == 2:
+            return base64.b64decode(assertion)
 
         # Without an additional decode() call the output would be a byte array which is prefixed with "b'"
         return base64.b64decode(assertion).decode()
