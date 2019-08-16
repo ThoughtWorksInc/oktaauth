@@ -1,10 +1,15 @@
 =========================
- oktaauth
+ oktaauth - Python 3
 =========================
 
 The oktaauth module and command line interface allows users to
 authenticate with Okta and obtain a SAML assertion either from the
 command line or programmatically from another script.
+
+Installation
+===========
+
+`python3 setup.py install`
 
 Usage
 =====
@@ -35,3 +40,4 @@ Authors
 =======
 
 * Peter Gillard-Moss
+* Matthias Scholz
