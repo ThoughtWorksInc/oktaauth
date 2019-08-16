@@ -1,3 +1,4 @@
+import sys
 import requests
 import base64
 import logging
@@ -10,6 +11,21 @@ try:
 except ImportError:
     import urlparse
     urlunparse = urlparse.urlunparse
+
+
+# Support Python 2 and 3
+py_version = sys.version_info.major
+if py_version == 2:
+    def toUTF8( string ):
+        return string.decode('utf8')
+    def toStr( b64 ):
+        return base64.b64decode( b64 )
+else:
+    def toUTF8( string ):
+        return string
+    def toStr( b64 ):
+        return base64.b64decode( b64 ).decode('utf8')
+
 
 class OktaAPIAuth(object):
 
@@ -115,11 +131,7 @@ class OktaSamlAuth(OktaAPIAuth):
         if resp.status_code != 200:
             raise Exception('Received error code from server: %s' % resp.status_code)
 
-        py_version = int(str(range(3))[-2])
-        if py_version == 2:
-            return resp.text.decode('utf8')
-
-        return resp.text
+        return toUTF8(resp.text)
 
     def assertion(self, saml):
         assertion = ''
@@ -128,12 +140,7 @@ class OktaSamlAuth(OktaAPIAuth):
             if inputtag.get('name') == 'SAMLResponse':
                 assertion = inputtag.get('value')
 
-        py_version = int(str(range(3)[-2]))
-        if py_version == 2:
-            return base64.b64decode(assertion)
-
-        # Without an additional decode() call the output would be a byte array which is prefixed with "b'"
-        return base64.b64decode(assertion).decode()
+        return toStr(assertion)
 
     def auth(self):
         token = super(OktaSamlAuth, self).auth()
