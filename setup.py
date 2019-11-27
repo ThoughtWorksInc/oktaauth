@@ -256,7 +256,8 @@ setup_dict = dict(
     install_requires=[
         'argparse',
         'beautifulsoup4>=4.4',
-        'requests>=2.8'
+        'requests>=2.8',
+        'six',
     ] + python_version_specific_requires,
     # Allow tests to be run with `python setup.py test'.
     tests_require=[
