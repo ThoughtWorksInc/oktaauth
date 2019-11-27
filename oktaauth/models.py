@@ -1,8 +1,8 @@
 import requests
 import base64
-import urlparse
 import logging
 from bs4 import BeautifulSoup
+import six.moves.urllib.parse
 log = logging.getLogger('oktaauth')
 
 class OktaAPIAuth(object):
@@ -15,7 +15,7 @@ class OktaAPIAuth(object):
         self.passcode = passcode
         url_new = ('https', okta_server,
                    '', '', '','')
-        self.okta_url = urlparse.urlunparse(url_new)
+        self.okta_url = six.moves.urllib.parse.urlunparse(url_new)
         return
 
     def okta_req(self, path, data):
