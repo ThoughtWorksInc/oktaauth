@@ -35,16 +35,16 @@ except ImportError:
 sys.path.insert(0, os.path.abspath('.'))
 
 ## Constants
-CODE_DIRECTORY = 'oktaauth-py3'
+CODE_DIRECTORY = 'oktaauthpy3'
 DOCS_DIRECTORY = 'docs'
 TESTS_DIRECTORY = 'tests'
 PYTEST_FLAGS = ['--doctest-modules']
 
 # Import metadata. Normally this would just be:
 #
-#     from oktaauth-py3 import metadata
+#     from oktaauthpy3 import metadata
 #
-# However, when we do this, we also import `oktaauth/__init__.py'. If this
+# However, when we do this, we also import `oktaauthpy3/__init__.py'. If this
 # imports names from some other modules and these modules have third-party
 # dependencies that need installing (which happens after this file is run), the
 # script will crash. What we do instead is to load the metadata module by path
@@ -268,7 +268,7 @@ setup_dict = dict(
     zip_safe=False,  # don't use eggs
     entry_points={
         'console_scripts': [
-            'oktaauth-py3 = oktaauth-py3.main:entry_point'
+            'oktaauthpy3 = oktaauthpy3.main:entry_point'
         ]
     }
 )

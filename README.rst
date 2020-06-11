@@ -1,19 +1,19 @@
 =========================
- oktaauth-py3
+ oktaauthpy3
 =========================
 
-The oktaauth-py3 module and command line interface allows users to
+The oktaauthpy3 module and command line interface allows users to
 authenticate with Okta and obtain a SAML assertion either from the
 command line or programmatically from another script.
 
 Usage
 =====
 
-The oktaauth-py3 CLI requires a few arguments to operate.
+The oktaauthpy3 CLI requires a few arguments to operate.
 
     # obtain a SAML response from Okta
 
-    $ oktaauth-py3 --username joebloggs --server
+    $ oktaauthpy3 --username joebloggs --server
     acemeinc.okta.com --apptype amazon_aws --appid exk5c0llc
 
 The *apptype* and *appid* are provided by okta and would be seen in the

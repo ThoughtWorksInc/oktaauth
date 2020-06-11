@@ -3,7 +3,7 @@ import base64
 from urllib.parse import urlparse
 import logging
 from bs4 import BeautifulSoup
-log = logging.getLogger('oktaauth-py3')
+log = logging.getLogger('oktaauthpy3')
 
 class OktaAPIAuth(object):
 
