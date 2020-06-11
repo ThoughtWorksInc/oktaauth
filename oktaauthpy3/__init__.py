@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Authenticates from the CLI"""
 
-from oktaauth import metadata
+from oktaauthpy3 import metadata
 
 
 __version__ = metadata.version
