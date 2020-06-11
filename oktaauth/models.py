@@ -1,6 +1,6 @@
 import requests
 import base64
-import urlparse
+from urllib.parse import urlparse
 import logging
 from bs4 import BeautifulSoup
 log = logging.getLogger('oktaauth')

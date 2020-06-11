@@ -8,7 +8,7 @@ Information describing the project.
 package = 'oktaauth'
 project = "Okta CLI authentication"
 project_no_spaces = project.replace(' ', '')
-version = '0.2'
+version = '0.3'
 description = 'Authenticates from the CLI'
 authors = ['Peter Gillard-Moss']
 authors_string = ', '.join(authors)
