@@ -2,6 +2,8 @@
  oktaauthpy3
 =========================
 
+This is a fork of oktaauth with Python3 support
+
 The oktaauthpy3 module and command line interface allows users to
 authenticate with Okta and obtain a SAML assertion either from the
 command line or programmatically from another script.
@@ -27,11 +29,15 @@ submit a pull request to this ``README``.
 Thanks
 ======
 
+Peter Gillard-Moss who is the original Author or oktaauth
+https://pypi.org/project/oktaauth/
+
 Thanks to Okta for help.  I borrowed a lot of code from
 https://github.com/okta/okta-openvpn to handle the Okta API
 authentication flow.
 
-Authors
-=======
 
-* Peter Gillard-Moss
+Author
+===========
+
+* Mansab Uppal
