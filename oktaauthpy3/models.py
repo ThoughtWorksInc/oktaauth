@@ -110,7 +110,7 @@ class OktaSamlAuth(OktaAPIAuth):
         if resp.status_code != 200:
             raise Exception('Received error code from server: %s' % resp.status_code)
 
-        return resp.str
+        return resp.text
 
     def assertion(self, saml):
         assertion = ''
