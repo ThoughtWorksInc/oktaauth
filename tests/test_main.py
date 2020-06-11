@@ -8,8 +8,8 @@ from pytest import raises
 import pytest
 parametrize = pytest.mark.parametrize
 
-from oktaauth import metadata
-from oktaauth.main import main
+from oktaauth-py3 import metadata
+from oktaauth-py3.main import main
 
 
 class TestMain(object):

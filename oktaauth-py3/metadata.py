@@ -5,7 +5,7 @@ Information describing the project.
 """
 
 # The package name, which is also the "UNIX name" for the project.
-package = 'oktaauth'
+package = 'oktaauth-py3'
 project = "Okta CLI authentication"
 project_no_spaces = project.replace(' ', '')
 version = '0.3'

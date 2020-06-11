@@ -35,14 +35,14 @@ except ImportError:
 sys.path.insert(0, os.path.abspath('.'))
 
 ## Constants
-CODE_DIRECTORY = 'oktaauth'
+CODE_DIRECTORY = 'oktaauth-py3'
 DOCS_DIRECTORY = 'docs'
 TESTS_DIRECTORY = 'tests'
 PYTEST_FLAGS = ['--doctest-modules']
 
 # Import metadata. Normally this would just be:
 #
-#     from oktaauth import metadata
+#     from oktaauth-py3 import metadata
 #
 # However, when we do this, we also import `oktaauth/__init__.py'. If this
 # imports names from some other modules and these modules have third-party
@@ -268,7 +268,7 @@ setup_dict = dict(
     zip_safe=False,  # don't use eggs
     entry_points={
         'console_scripts': [
-            'oktaauth = oktaauth.main:entry_point'
+            'oktaauth-py3 = oktaauth-py3.main:entry_point'
         ]
     }
 )
