@@ -119,7 +119,8 @@ class OktaSamlAuth(OktaAPIAuth):
             if inputtag.get('name') == 'SAMLResponse':
                 assertion = inputtag.get('value')
 
-        return base64.b64decode(assertion)
+        decodedAssertion =  base64.b64decode(assertion)
+        return str(decodedAssertion, "utf-8")
 
     def auth(self):
         token = super(OktaSamlAuth, self).auth()
