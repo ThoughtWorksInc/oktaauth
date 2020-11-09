@@ -9,10 +9,10 @@ import sys
 import getpass
 import logging
 
-from oktaauth import models
-from oktaauth import metadata
+from oktaauthpy3 import models
+from oktaauthpy3 import metadata
 
-log = logging.getLogger('oktaauth')
+log = logging.getLogger('oktaauthpy3')
 
 def configurelogging():
     log.setLevel(logging.DEBUG)
